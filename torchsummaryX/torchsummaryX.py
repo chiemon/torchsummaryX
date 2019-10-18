@@ -23,8 +23,6 @@ def summary(model, x, *args, **kwargs):
                 if item == module:
                     key = "{:<8} {}".format(module_idx + 1, name)
 
-            print(type(module))
-
             info = OrderedDict()
             info["id"] = id(module)
             if isinstance(outputs, (list, tuple)):
