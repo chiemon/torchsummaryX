@@ -21,7 +21,9 @@ def summary(model, x, *args, **kwargs):
             # Lookup name in a dict that includes parents
             for name, item in module_names.items():
                 if item == module:
-                    key = "{}_{}".format(module_idx, name)
+                    key = "{:<8} {}".format(module_idx + 1, name)
+
+            print(type(module))
 
             info = OrderedDict()
             info["id"] = id(module)
@@ -99,16 +101,19 @@ def summary(model, x, *args, **kwargs):
         out="Output Shape",
     ))
     df_sum = df.sum()
-    df.index.name = "Layer"
+    df.index.name = "No.      Layer"
 
     df = df[["Kernel Shape", "Output Shape", "Params", "Mult-Adds"]]
     max_repr_width = max([len(row) for row in df.to_string().split("\n")])
 
     option = pd.option_context(
         "display.max_rows", 600,
-        "display.max_columns", 10,
-        "display.float_format", pd.io.formats.format.EngFormatter(use_eng_prefix=True)
+        "display.max_columns", 500,
+        "display.float_format", pd.io.formats.format.EngFormatter(use_eng_prefix=True),
+        "display.width", 1000,
+        'max_colwidth', 100
     )
+
     with option:
         print("="*max_repr_width)
         print(df.replace(np.nan, "-"))
