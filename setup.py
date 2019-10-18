@@ -3,10 +3,10 @@ from setuptools import setup, find_packages
 setup(
     name             = "torchsummaryX",
     version          = "1.2.0",
-    description      = "Improved visualization tool of torchsummary.",
-    author           = "Namhyuk Ahn",
-    author_email     = "nmhkahn@gmail.com",
-    url              = "https://github.com/nmhkahn/torchsummaryX",
+    description      = "Fork from https://github.com/nmhkahn/torchsummaryX.",
+    author           = "Chiemon",
+    author_email     = "ahxieqi@163.com",
+    url              = "https://github.com/chiemon/torchsummaryX",
     packages         =["torchsummaryX"],
     install_requires = ["torch", "numpy", "pandas"],
 )
